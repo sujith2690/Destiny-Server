@@ -62,6 +62,8 @@ export const addMultiplePackages = async (req, res) => {
 // Get all packages
 export const getAllPackages = async (req, res) => {
     try {
+        console.log('------------its getting all packages------ ')
+        
         const packages = await packageModel.find();
         return res.status(200).json({ packages });
     } catch (error) {
