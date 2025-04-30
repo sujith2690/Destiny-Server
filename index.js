@@ -7,6 +7,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './dataBase.js'
 import authRoute from './routes/authRoute.js';
+import bookingRoute from './routes/bookingRoute.js';
+import packageRouter from './routes/packageRoute.js';
 
 dotenv.config();
 
@@ -19,6 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 connectDB();
 
 app.use('/auth', authRoute);
+app.use('/booking', bookingRoute);
+app.use("/packages", packageRouter);
+
 
 
 const PORT = process.env.PORT || 5000

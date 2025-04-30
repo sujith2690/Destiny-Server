@@ -1,29 +1,45 @@
 import mongoose from "mongoose";
 
-const bookingSchema = mongoose.Schema({
+// Sub-schema for each individual booking entry
+const singleBookingSchema = new mongoose.Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
+        packageId: {
+            type: mongoose.Types.ObjectId,
+            ref: "packages",
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+        },
+        date: {
+            type: Date,
+            required: true,
+        },
+        people: {
+            type: Number,
+            required: true,
+        },
+        amount: {
+            type: Number,
+            required: true,
+        },
+    },
+    { timestamps: true }
+);
+
+const bookingSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Types.ObjectId,
         ref: "users",
         required: true,
     },
-    category: {
-        type: String,
-        required: true,
-    },
-    title: {
-        type: String,
-        required: true,
-    },
-    price: {
-        type: Number,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true,
-    },
-},
-    { timestamps: true }
-);
-const bookingModel = mongoose.model("bookings", bookingSchema)
+    booking: [singleBookingSchema],
+});
+
+const bookingModel = mongoose.model("bookings", bookingSchema);
 export default bookingModel;
