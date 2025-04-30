@@ -9,6 +9,7 @@ import connectDB from './dataBase.js'
 import authRoute from './routes/authRoute.js';
 import bookingRoute from './routes/bookingRoute.js';
 import packageRouter from './routes/packageRoute.js';
+import profileRoute from './routes/profileRoute.js';
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ connectDB();
 app.use('/auth', authRoute);
 app.use('/booking', bookingRoute);
 app.use("/packages", packageRouter);
+app.use("/user", profileRoute);
 
 
 

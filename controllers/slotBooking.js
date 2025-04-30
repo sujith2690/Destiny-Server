@@ -48,9 +48,7 @@ export const bookSlot = async (req, res) => {
 export const getAllBookings = async (req, res) => {
     try {
         const userId = req.userId; // Set by auth middleware
-        console.log(userId, '----------booked userid')
         const bookingDoc = await bookingModel.findOne({ userId });
-        console.log(bookingDoc, '----------booked doc')
         if (!bookingDoc) {
             return res.status(404).json({ message: 'No bookings found for this user' });
         }

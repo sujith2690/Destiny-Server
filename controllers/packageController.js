@@ -77,7 +77,6 @@ export const singlePackages = async (req, res) => {
             return res.status(400).json({ message: "Package ID is required" });
         }
         const packages = await packageModel.findById(packageId);
-        console.log(packages, '-----------packages')
         return res.status(200).json({ packages });
     } catch (error) {
         console.error("Error fetching packages:", error);

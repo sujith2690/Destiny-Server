@@ -37,7 +37,6 @@ export const loginUser = async (req, res) => {
 export const signUpUser = async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
-        console.log(name, email, '---------signup data');
 
         const existingUser = await userModel.findOne({ email });
         if (existingUser) {

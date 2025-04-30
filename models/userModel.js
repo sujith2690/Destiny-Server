@@ -13,35 +13,13 @@ const userSchema = mongoose.Schema({
     address: {
         type: String,
     },
-    mobile: {
+    phone: {
         type: Number,
     },
     password: {
         type: String,
         required: true
     },
-    Notifications: [
-        {
-            content: {
-                type: String,
-                required: true,
-            },
-            userId: {
-                type: mongoose.Schema.ObjectId,
-                ref: 'users',
-            },
-            bookingId: {
-                type: mongoose.Schema.ObjectId,
-                ref: 'bookings',
-            },
-            date: Date,
-        },
-    ],
-    favoritePlaces: [{
-        type: mongoose.Types.ObjectId,
-        ref: "places",
-        required: true
-    }]
 })
 
 const userModel = mongoose.model('users', userSchema);
